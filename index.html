@@ -132,14 +132,14 @@
         .delay-5 { animation-delay: 1s; }
 
         /* Custom scrollbar for gallery */
-        .gallery-grid::-webkit-scrollbar {
+        .custom-scrollbar::-webkit-scrollbar {
             width: 8px;
         }
-        .gallery-grid::-webkit-scrollbar-track {
+        .custom-scrollbar::-webkit-scrollbar-track {
             background: rgba(0,0,0,0.1);
             border-radius: 10px;
         }
-        .gallery-grid::-webkit-scrollbar-thumb {
+        .custom-scrollbar::-webkit-scrollbar-thumb {
             background: linear-gradient(45deg, var(--primary-start), var(--primary-end));
             border-radius: 10px;
         }
@@ -161,11 +161,9 @@
         <i class="fa-solid fa-star"></i>
     </div>
 
-    <div id="confetti-container" class="fixed inset-0 pointer-events-none z-50"></div>
-
     <main class="birthday-card w-full max-w-4xl p-6 md:p-10 relative">
         <div class="text-center mb-8">
-            <h1 class="dancing-font text-5xl md:text-7xl font-bold text-gradient mb-2 animated-item">Happy Birthday</h1>
+            <h1 class="dancing-font text-5xl md:text-7xl font-bold text-gradient mb-2 animated-item">Cô Gái Đáng Yêu</h1>
             <h2 class="text-4xl md:text-5xl font-semibold text-gray-800 dancing-font animated-item delay-1">Lý Thảo Vy</h2>
             <div class="w-24 md:w-32 h-1 bg-gradient-to-r from-pink-400 to-purple-400 mx-auto mt-4 rounded-full animated-item delay-1"></div>
         </div>
@@ -179,8 +177,8 @@
 
             <div class="w-full lg:w-3/5">
                 <div class="message-box bg-rose-50/70 p-5 rounded-xl mb-6 animated-item delay-3">
-                    <p class="text-gray-600 mb-4 italic text-center">"Gửi đến cô gái tuyệt vời nhất ngày hôm nay..."</p>
-                    <p class="text-gray-800 text-sm md:text-base text-justify">A nghĩ việc đó là tốt cho em. Vì cơ bản anh không tốt. A ko còn tha thiết với việc quay lại với em khi nhìn em vui vẻ với các mối quan hệ hiện tại. A đã làm những thứ em không thích hoặc không vui. Mqh a đối vs em hiện tại thì a chỉ mong là mình là 1 người bạn. Có thể nói xàm với nhau 24/7 chứ a hk còn mong muốn j với em nữa. Cảm ơn em nhớ.</p>
+                    <p class="text-gray-600 mb-4 italic text-center"><strong>"Anh yêu em"</strong></p>
+                    <p class="text-gray-800 text-sm md:text-base text-justify">Gửi Vy, hôm nay là ngày 29/09/2025 chắc sẽ rất lâu sau em mới nhớ đến trang này và vào đây để đọc anh sẽ thường xuyên cập nhật nó để khi nhớ em anh sẽ lên đây để xem. Anh yêu em nhiều lắm, em củng đã lấy được nước mắt của anh rồi xin em đừng bỏ rơi anh. Anh yêu em rất nhiều nhưng anh thấy mình không xứng, anh hy vọng có thể đi xa nhất trên đoạn đường này, đó là tất cả những gì anh có thể ước. Yêu em nhiều lắm Lý Thảo Vy.</p>
                 </div>
 
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-8 animated-item delay-4">
@@ -203,8 +201,8 @@
                 </div>
 
                 <div class="flex flex-col sm:flex-row gap-4 justify-center items-center animated-item delay-5">
-                    <button id="wish-btn" class="btn-primary text-white px-8 py-3 rounded-full font-bold shadow-lg text-base w-full sm:w-auto">
-                        <i class="fas fa-birthday-cake mr-2"></i> Gửi lời chúc
+                    <button id="remember-btn" class="btn-primary text-white px-8 py-3 rounded-full font-bold shadow-lg text-base w-full sm:w-auto">
+                        <i class="fas fa-memory mr-2"></i> Remember
                     </button>
                     <button id="gallery-btn" class="btn-primary text-white px-8 py-3 rounded-full font-bold shadow-lg text-base w-full sm:w-auto">
                         <i class="fas fa-images mr-2"></i> Lý Thảo Vy
@@ -214,21 +212,40 @@
         </div>
     </main>
 
-    <div id="cake-popup" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 hidden transition-opacity duration-300">
-        <div class="bg-gradient-to-br from-rose-50 to-purple-100 rounded-2xl p-8 max-w-sm w-full mx-4 relative shadow-2xl transform scale-95 transition-transform duration-300">
-            <button id="close-popup" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 transition">
-                <i class="fas fa-times text-xl"></i>
+    <div id="remember-popup" class="fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm flex items-center justify-center z-50 hidden p-4 transition-opacity duration-300">
+        <div class="bg-white/90 backdrop-blur-xl border border-white/20 rounded-2xl p-6 md:p-8 max-w-4xl w-full mx-auto relative shadow-2xl transform scale-95 transition-transform duration-300">
+            <button id="close-remember-popup" class="absolute top-4 right-4 text-gray-600 hover:text-pink-500 transition-colors duration-300 z-10">
+                <i class="fas fa-times text-2xl"></i>
             </button>
             <div class="text-center">
-                <div class="w-24 h-24 mx-auto mb-6 bg-white rounded-full flex items-center justify-center shadow-lg">
-                    <i class="fas fa-birthday-cake text-5xl text-gradient"></i>
-                </div>
-                <h3 class="text-3xl font-bold text-gray-800 mb-4 dancing-font text-gradient">Happy Birthday Vy!</h3>
-                <p class="text-gray-600 mb-6">Chúc em có một ngày sinh nhật thật ý nghĩa, tràn ngập tiếng cười và hạnh phúc. Mong mọi điều tốt đẹp nhất sẽ đến với em trong tuổi mới!</p>
-                <div class="flex justify-center">
-                    <div class="w-16 h-16 bg-yellow-300/50 rounded-full flex items-center justify-center">
-                        <i class="fas fa-glass-cheers text-3xl text-yellow-600"></i>
+                <h3 class="dancing-font text-4xl font-bold text-gradient mb-6">Our Memories</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-h-[70vh] overflow-y-auto p-2 custom-scrollbar">
+                    
+                    <div class="w-full">
+                        <video id="video1" controls class="w-full rounded-lg shadow-lg">
+                            <source src="clip1.mp4" type="video/mp4">
+                            Trình duyệt của bạn không hỗ trợ thẻ video.
+                        </video>
+                        <div class="flex items-center justify-center mt-3 gap-3">
+                            <p class="text-gray-800 font-semibold text-lg">Lizieecute</p>
+                            <button class="fullscreen-btn" data-video-target="video1" title="Phóng to">
+                                <i class="fas fa-expand text-xl text-gradient hover:opacity-70 transition-opacity"></i>
+                            </button>
+                        </div>
                     </div>
+                    
+                    <div class="w-full">
+                        <video id="video2" controls class="w-full rounded-lg shadow-lg">
+                            <source src="clip2.mp4" type="video/mp4">
+                            Trình duyệt của bạn không hỗ trợ thẻ video.
+                        </video>
+                         <div class="flex items-center justify-center mt-3 gap-3">
+                            <button class="fullscreen-btn" data-video-target="video2" title="Phóng to">
+                                <i class="fas fa-expand text-xl text-gradient hover:opacity-70 transition-opacity"></i>
+                            </button>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -241,7 +258,7 @@
             </button>
             <div class="text-center">
                 <h3 class="dancing-font text-4xl font-bold text-gradient mb-6">Hehehehe</h3>
-                <div class="gallery-grid grid grid-cols-2 md:grid-cols-3 gap-4 max-h-[70vh] overflow-y-auto p-1">
+                <div class="custom-scrollbar grid grid-cols-2 md:grid-cols-3 gap-4 max-h-[70vh] overflow-y-auto p-1">
                     <div class="group overflow-hidden rounded-lg shadow-md aspect-w-1 aspect-h-1">
                         <img src="vy1.jpg" alt="Kỷ niệm 1" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300 ease-in-out cursor-pointer">
                     </div>
@@ -261,85 +278,70 @@
                         <img src="vy6.jpg" alt="Kỷ niệm 6" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300 ease-in-out cursor-pointer">
                     </div>
                     <div class="group overflow-hidden rounded-lg shadow-md aspect-w-1 aspect-h-1">
-                        <img src="vy7.jpg" alt="Kỷ niệm 6" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300 ease-in-out cursor-pointer">
+                        <img src="vy7.jpg" alt="Kỷ niệm 7" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300 ease-in-out cursor-pointer">
                     </div>
                     <div class="group overflow-hidden rounded-lg shadow-md aspect-w-1 aspect-h-1">
-                        <img src="vy8.jpg" alt="Kỷ niệm 6" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300 ease-in-out cursor-pointer">
+                        <img src="vy8.jpg" alt="Kỷ niệm 8" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300 ease-in-out cursor-pointer">
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
 
-
     <script>
-        const confettiContainer = document.getElementById('confetti-container');
-        const colors = ['#ec4899', '#a855f7', '#f9a8d4', '#d8b4fe', '#ffffff'];
+        // --- JAVASCRIPT CHO POPUP KỶ NIỆM (VIDEO) ---
+        const rememberBtn = document.getElementById('remember-btn');
+        const rememberPopup = document.getElementById('remember-popup');
+        const closeRememberPopup = document.getElementById('close-remember-popup');
+        const videos = rememberPopup.querySelectorAll('video');
 
-        function createConfettiPiece() {
-            const confetti = document.createElement('div');
-            confetti.style.position = 'absolute';
-            confetti.style.width = `${Math.random() * 10 + 5}px`;
-            confetti.style.height = confetti.style.width;
-            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-            confetti.style.top = `${-20}px`;
-            confetti.style.left = `${Math.random() * 100}vw`;
-            confetti.style.opacity = '0.7';
-            confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
-            confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
-            confettiContainer.appendChild(confetti);
-            
-            animateConfetti(confetti);
-        }
-
-        function animateConfetti(confetti) {
-            const duration = Math.random() * 3 + 4;
-            const xEnd = Math.random() * 200 - 100;
-            
-            confetti.animate([
-                { transform: `translate3d(0, 0, 0) rotate(0deg)` },
-                { transform: `translate3d(${xEnd}px, 100vh, 0) rotate(${Math.random() * 720}deg)` }
-            ], {
-                duration: duration * 1000,
-                easing: 'linear',
-            }).onfinish = () => confetti.remove();
-        }
-
-        function triggerConfetti() {
-            for (let i = 0; i < 100; i++) {
-                setTimeout(createConfettiPiece, i * 20);
-            }
-        }
-
-        // --- Popup Lời chúc ---
-        const wishBtn = document.getElementById('wish-btn');
-        const cakePopup = document.getElementById('cake-popup');
-        const closePopup = document.getElementById('close-popup');
-
-        wishBtn.addEventListener('click', function() {
-            cakePopup.classList.remove('hidden');
+        rememberBtn.addEventListener('click', function() {
+            rememberPopup.classList.remove('hidden');
             setTimeout(() => {
-                cakePopup.firstElementChild.classList.add('scale-100');
+                rememberPopup.firstElementChild.classList.add('scale-100');
             }, 10);
-            triggerConfetti();
         });
 
-        function closeWishPopup() {
-            cakePopup.firstElementChild.classList.remove('scale-100');
+        function closeRemember() {
+            rememberPopup.firstElementChild.classList.remove('scale-100');
+            // Dừng tất cả video khi đóng popup
+            videos.forEach(video => {
+                video.pause();
+                video.currentTime = 0;
+            });
             setTimeout(() => {
-                cakePopup.classList.add('hidden');
+                rememberPopup.classList.add('hidden');
             }, 300);
         }
 
-        closePopup.addEventListener('click', closeWishPopup);
-        cakePopup.addEventListener('click', function(e) {
+        closeRememberPopup.addEventListener('click', closeRemember);
+        rememberPopup.addEventListener('click', function(e) {
             if (e.target === this) {
-                closeWishPopup();
+                closeRemember();
             }
         });
 
-        // --- JAVASCRIPT MỚI CHO GALLERY ẢNH ---
+        // --- JAVASCRIPT CHO NÚT PHÓNG TO VIDEO (MỚI) ---
+        const fullscreenBtns = document.querySelectorAll('.fullscreen-btn');
+        fullscreenBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const videoId = btn.dataset.videoTarget;
+                const videoElement = document.getElementById(videoId);
+
+                if (videoElement) {
+                    if (videoElement.requestFullscreen) {
+                        videoElement.requestFullscreen();
+                    } else if (videoElement.webkitRequestFullscreen) { /* Safari */
+                        videoElement.webkitRequestFullscreen();
+                    } else if (videoElement.msRequestFullscreen) { /* IE11 */
+                        videoElement.msRequestFullscreen();
+                    }
+                }
+            });
+        });
+
+
+        // --- JAVASCRIPT CHO GALLERY ẢNH ---
         const galleryBtn = document.getElementById('gallery-btn');
         const galleryPopup = document.getElementById('gallery-popup');
         const closeGalleryPopup = document.getElementById('close-gallery-popup');
@@ -348,14 +350,14 @@
             galleryPopup.classList.remove('hidden');
             setTimeout(() => {
                 galleryPopup.firstElementChild.classList.add('scale-100');
-            }, 10); // small delay to ensure transition runs
+            }, 10);
         });
 
         function closeGallery() {
             galleryPopup.firstElementChild.classList.remove('scale-100');
             setTimeout(() => {
                 galleryPopup.classList.add('hidden');
-            }, 300); // Wait for transition to finish
+            }, 300);
         }
 
         closeGalleryPopup.addEventListener('click', closeGallery);
